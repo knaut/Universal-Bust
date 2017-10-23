@@ -60,9 +60,6 @@ class Test extends React.Component {
     return(
       <div>
         <span className='red'>This is a good test</span>
-        <ConnectedCounter/>
-        <Increment/>
-        <Decrement/>
       </div>
     )
   }

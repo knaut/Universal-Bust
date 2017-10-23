@@ -1,43 +1,18 @@
-import { applyMiddleware, createStore } from 'redux';
-import { createLogger } from 'redux-logger';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import createHistory from 'history/createBrowserHistory';
+import reducers from './reducers';
 
-let initialState = {
-  count: 0
-}
+const history = createHistory();
 
-const reducer = (state = initialState, action) => {
-  switch(action.type) {
-    default:
-      return state;
-    case 'INCREMENT':
+const middleware = routerMiddleware(history);
 
-      state = {
-        ...state,
-        count: state.count + 1
-      }
-
-    break;
-    case 'DECREMENT':
-
-      state = {
-        ...state,
-        count: state.count - 1
-      }
-
-    break;
-  }
-
-  return state;
-}
-
-const middleware = applyMiddleware(
-  promise(),
-  thunk,
-  createLogger()
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    router: routerReducer
+  }),
+  applyMiddleware(middleware)
 );
 
-const store = createStore(reducer, middleware);
-
-export default store;
+export { store, history };

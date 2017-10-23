@@ -1,2 +1,11 @@
-## webpackBust
-An exploration in learning webpack and configuring it minimally for Hapi, React, and Redux. Commit history should be descriptive and self-explanatory.
+## universalBust
+
+The goal of this project is to find a consistent architecture pattern for universal single-page end-to-end Javascript applications.
+
+The goal is to do this with the following technologies: Hapi, React, Redux, Webpack, Sass, and any necessary routing libraries.
+
+universalBust should render a series of different pages each with their own URL. Some of these pages should have a simple interactive component, like a counter or a form field.
+
+If the application is refreshed on a given route, the server should resupply the application's source code in that state. The application should know its approriate state client-side, and should continue to run as normal.
+
+The idea is that this project can be used as a boilerplate for other projects.
