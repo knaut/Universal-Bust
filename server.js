@@ -5,10 +5,8 @@ require('babel-register')({
 
 // IMPORT
 const Hapi = require('hapi');
-const dateFormat = require('dateformat');
 
 // SETUP
-const format = "dd mmm HH:MM:ss";
 const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
@@ -71,7 +69,7 @@ server.register([
   });
 
   server.start(function() {
-    console.log(dateFormat(new Date(), format) + ' - server started: ' + server.info.uri);
+    console.log('Server started: ' + server.info.uri);
   });
 
 });
