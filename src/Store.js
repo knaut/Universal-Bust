@@ -1,18 +1,31 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import reducers from './reducers';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { createLogger } from 'redux-logger';
+
+// REDUCERS
+import counter from './reducers/counter.js';
+
+// a simple counter
+var initialState = {
+  counter: 0,
+  router: null
+};
+
+const rootReducer = combineReducers({
+  counter,
+  router: routerReducer
+});
 
 const history = createHistory();
+const historyMiddleware = routerMiddleware(history);
 
-const middleware = routerMiddleware(history);
-
-const store = createStore(
-  combineReducers({
-    ...reducers,
-    router: routerReducer
-  }),
-  applyMiddleware(middleware)
+const middleware = applyMiddleware(
+  historyMiddleware,
+  createLogger()
 );
+
+const store = createStore( rootReducer, middleware);
 
 export { store, history };

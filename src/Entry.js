@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as Store from './Store.js';
-console.log(Store)
-
 import { Route } from 'react-router';
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
+import { ConnectedRouter } from 'react-router-redux';
 
 // PAGES
 // import Layout from './components/Layout.jsx';

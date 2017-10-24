@@ -1,6 +1,6 @@
 // BABEL
 require('babel-register')({
-  presets: ['es2015', 'react']
+  presets: ['env', 'react']
 });
 
 // IMPORT
