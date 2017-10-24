@@ -27,15 +27,6 @@ server.register([
     return console.error(err);
   }
 
-  // VIEW ENGINE
-  server.views({
-    engines: {
-      jsx: require('hapi-react-views')
-    },
-    relativeTo: __dirname,
-    path: 'src/components'
-  });
-
   // STATIC ASSETS
   server.route({
     method: 'GET',

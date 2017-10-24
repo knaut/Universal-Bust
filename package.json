@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "hapi": "^16.5.2",
-    "hapi-react-views": "^9.3.0",
     "history": "^4.7.2",
     "inert": "^4.2.1",
     "react": "^15.6.1",
