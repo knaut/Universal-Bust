@@ -9,7 +9,7 @@ const store = Store.store;
 
 function mapStateToProps(state) {
   return {
-    count: state.count
+    counter: state.counter
   }
 }
 
@@ -21,7 +21,7 @@ class Counter extends React.Component {
   render() {
     return(
       <div>
-        <div id='counter'>{this.props.count}</div>
+        <div id='counter'>{this.props.counter}</div>
       </div>
     )
   }
@@ -56,7 +56,7 @@ class Decrement extends React.Component {
   }
 }
 
-class Test extends React.Component {
+class Index extends React.Component {
   render() {
     return(
       <div>
@@ -69,4 +69,4 @@ class Test extends React.Component {
   }
 }
 
-export default Test;
+export default Index;
