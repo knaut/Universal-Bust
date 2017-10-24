@@ -12,6 +12,7 @@ import Index from './components/Index.jsx';
 import About from './components/About.jsx';
 import Contact from './components/Contact.jsx';
 
+
 ReactDOM.render(
   <Provider store={Store.store}>
     <ConnectedRouter history={Store.history}>

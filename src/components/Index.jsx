@@ -3,7 +3,9 @@ import React from 'react';
 import * as actions from '../Actions.js';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import store from '../Store.js';
+import * as Store from '../Store.js';
+
+const store = Store.store;
 
 function mapStateToProps(state) {
   return {
@@ -59,6 +61,9 @@ class Test extends React.Component {
     return(
       <div>
         <span className='red'>This is a good test</span>
+        <ConnectedCounter/>
+        <Increment/>
+        <Decrement/>
       </div>
     )
   }

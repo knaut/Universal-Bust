@@ -7,12 +7,6 @@ import { createLogger } from 'redux-logger';
 // REDUCERS
 import counter from './reducers/counter.js';
 
-// a simple counter
-var initialState = {
-  counter: 0,
-  router: null
-};
-
 const rootReducer = combineReducers({
   counter,
   router: routerReducer
