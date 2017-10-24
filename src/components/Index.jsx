@@ -4,7 +4,6 @@ import * as actions from '../Actions.js';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import store from '../Store.js';
-import { Link } from 'react-router';
 
 function mapStateToProps(state) {
   return {

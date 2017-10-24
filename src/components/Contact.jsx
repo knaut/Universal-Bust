@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import store from '../Store.js';
 
-class About extends React.Component {
+class Contact extends React.Component {
   render() {
     return(
       <div>
-        <h1>About</h1>
+        <h1>Contact</h1>
       </div>
     );
   }
 };
 
-export default About;
+export default Contact;
