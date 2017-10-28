@@ -1,10 +1,16 @@
-// BABEL
-require('babel-register')({
-  presets: ['env', 'react']
-});
-
 // IMPORT
-const Hapi = require('hapi');
+import Hapi from 'hapi';
+import React from 'react';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { renderToString } from 'react-dom/server';
+
+// COMPONENTS
+// import Index from './src/components/Index.jsx';
+// import Navigation from './src/components/Navigation.jsx';
+
+// REDUCERS
+import counter from './src/reducers/counter.js';
 
 // SETUP
 const server = new Hapi.Server();
@@ -12,6 +18,9 @@ server.connection({
   host: 'localhost',
   port: 8000
 });
+
+// SERVER UTILS
+import renderHead from './src/utils/renderHead.js';
 
 // HAPI ENTRANCE
 server.register([
@@ -55,7 +64,27 @@ server.register([
     method: 'GET',
     path: '/',
     handler: function(request, reply) {
-      reply.file('./dist/index.html');
+
+      const rootReducer = combineReducers({
+        counter
+      });
+
+      const store = createStore( rootReducer );
+      console.log(store.getState())
+
+      const htmlString = renderToString(
+        <Provider store={store}>
+          <div>
+            hello
+          </div>
+        </Provider>
+      );
+
+      const renderedHead = renderHead(htmlString, store.getState());
+
+      console.log(renderedHead)
+
+      reply( renderedHead );
     }
   });
 

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "watch": "webpack --progress --watch",
-    "start": "node server"
+    "start": "babel-node server --presets env,react,stage-0"
   },
   "author": "",
   "license": "ISC",
