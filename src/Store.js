@@ -9,17 +9,17 @@ import counter from './reducers/counter.js';
 
 const rootReducer = combineReducers({
   counter,
-  router: routerReducer
+  // router: routerReducer
 });
 
-const history = createHistory();
-const historyMiddleware = routerMiddleware(history);
+// const history = createHistory();
+// const historyMiddleware = routerMiddleware(history);
 
 const middleware = applyMiddleware(
-  historyMiddleware,
+  // historyMiddleware,
   createLogger()
 );
 
 const store = createStore( rootReducer, middleware);
 
-export { store, history };
+export { store };
