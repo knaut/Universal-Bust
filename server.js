@@ -8,6 +8,7 @@ import { renderToString } from 'react-dom/server';
 // COMPONENTS
 // import Index from './src/components/Index.jsx';
 // import Navigation from './src/components/Navigation.jsx';
+import App from './src/components/App.jsx';
 
 // REDUCERS
 import counter from './src/reducers/counter.js';
@@ -75,7 +76,7 @@ server.register([
       const htmlString = renderToString(
         <Provider store={store}>
           <div>
-            hello
+            <App />
           </div>
         </Provider>
       );
