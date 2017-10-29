@@ -18,6 +18,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 class Counter extends React.Component {
+  
+  
   render() {
     return(
       <div>

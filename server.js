@@ -2,9 +2,18 @@
 import Hapi from 'hapi';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import StaticRouter from 'react-router-dom/StaticRouter';
+import { renderRoutes } from 'react-router-config';
 import { match, RouterContext } from 'react-router';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+
 import * as Store from './src/Store.js';
 const store = Store.store;
+
+import routes from './src/Routes.js';
+
+// DUX
+import counter from './src/dux/counter.js';
 
 // SETUP
 const server = new Hapi.Server();
@@ -17,6 +26,8 @@ server.connection({
 import renderHead from './src/utils/renderHead.js';
 import renderBody from './src/utils/renderBody.js';
 
+// COMPONENTS
+import Navigation from './src/components/Navigation.jsx';
 import Index from './src/components/Index.jsx';
 
 // HAPI ENTRANCE
@@ -62,13 +73,34 @@ server.register([
     path: '/',
     handler: function(request, reply) {
 
-      const appHtml = renderHead(
-        renderToString( renderBody( Index ) ),
-        store.getState()
-      );
-      console.log(appHtml)
+      const rootReducer = combineReducers({
+        counter
+      });
 
-      reply( appHtml );
+      const store = createStore(
+        rootReducer,
+        { count: 0 }
+      );
+
+      let context = {};
+
+      const jsxString = renderToString(
+        <StaticRouter location={request.url} context={context}>
+          {renderRoutes(routes)}
+        </StaticRouter>
+      );
+
+      
+
+      console.log(jsxString)
+      // const appHtml = renderHead(
+      //   renderToString( renderBody( Index, request.url, store.getState() ) ),
+      //   store.getState()
+      // );
+
+      // console.log(appHtml)
+
+      reply( 'hello' );
     }
   });
 
