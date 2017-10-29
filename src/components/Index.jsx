@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Store from '../Store.js';
 
+import { getCount } from '../dux/counter.js';
+
 const store = Store.store;
 
 function mapStateToProps(state) {
@@ -18,8 +20,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 class Counter extends React.Component {
-  
-  
+  static fetchData(store) {
+    return store.dispatch( getCount() );
+  }
+
   render() {
     return(
       <div>

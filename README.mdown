@@ -9,3 +9,15 @@ universalBust should render a series of different pages each with their own URL.
 If the application is refreshed on a given route, the server should resupply the application's source code in that state. The application should know its approriate state client-side, and should continue to run as normal.
 
 The idea is that this project can be used as a boilerplate for other projects.
+
+## Site Outline
+
+App
+  - Home
+    - some text and/or graphic
+  - About
+    - some text and/or graphic
+  - Contact
+    - some text and/or form field
+  - Counter
+    - an stateful counting device

@@ -14,6 +14,8 @@ export function decrement() {
   }
 }
 
+export const GET_COUNT = 'GET_COUNT';
+
 const initialState = 0
 
 export default function counter( state = initialState, action ) {
@@ -29,5 +31,14 @@ export default function counter( state = initialState, action ) {
     case 'DECREMENT':
 
       return state - 1;
+  }
+}
+
+export function getCount() {
+  return (dispatch, getState) => {
+    dispatch({
+      type: GET_COUNT,
+      payload: getState()
+    })
   }
 }

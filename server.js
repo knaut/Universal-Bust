@@ -3,8 +3,7 @@ import Hapi from 'hapi';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import StaticRouter from 'react-router-dom/StaticRouter';
-import { renderRoutes } from 'react-router-config';
-import { match, RouterContext } from 'react-router';
+import { matchRoutes, renderRoutes } from 'react-router-config';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import * as Store from './src/Store.js';
@@ -79,20 +78,44 @@ server.register([
 
       const store = createStore(
         rootReducer,
-        { count: 0 }
+        { counter: 0 }
       );
 
-      let context = {};
+      const branch = matchRoutes( routes, request.url );
+      const promises = branch.map( ({ route }) => {
+        let fetchData = route.component.fetchData;
+        return fetchData instanceof Function ? fetchData( store ) : Promise.resolve(null)
+      });
 
-      const jsxString = renderToString(
-        <StaticRouter location={request.url} context={context}>
-          {renderRoutes(routes)}
-        </StaticRouter>
-      );
+      console.log(branch)
+
+      // return Promise.all(promises).then((data) => {
+      //   let context = {};
+
+      //   const content = renderToString(
+      //     <Provider store={store}>
+      //       <StaticRouter location={request.url} context={context}>
+      //         {renderRoutes(routes)}
+      //       </StaticRouter>
+      //     </Provider>
+      //   );
+
+      //   console.log(content)
+      // });
 
       
 
-      console.log(jsxString)
+      // let context = {};
+
+      // const jsxString = renderToString(
+      //   <StaticRouter location={request.url} context={context}>
+      //     {renderRoutes(routes)}
+      //   </StaticRouter>
+      // );
+
+      
+
+      // console.log(jsxString)
       // const appHtml = renderHead(
       //   renderToString( renderBody( Index, request.url, store.getState() ) ),
       //   store.getState()
