@@ -7,19 +7,35 @@ import { createLogger } from 'redux-logger';
 // REDUCERS
 import counter from './reducers/counter.js';
 
-const rootReducer = combineReducers({
-  counter,
-  // router: routerReducer
-});
+var history = null;
 
-// const history = createHistory();
-// const historyMiddleware = routerMiddleware(history);
+if (typeof window === 'undefined') {
 
-const middleware = applyMiddleware(
-  // historyMiddleware,
-  createLogger()
-);
+  var rootReducer = combineReducers({
+    counter
+  });
 
-const store = createStore( rootReducer, middleware);
+  var middleware = applyMiddleware(
+    createLogger()
+  );
 
-export { store };
+} else {
+
+  var rootReducer = combineReducers({
+    counter,
+    router: routerReducer
+  });
+
+  history = createHistory();
+  var historyMiddleware = routerMiddleware(history);
+
+  var middleware = applyMiddleware(
+    historyMiddleware,
+    createLogger()
+  );
+}
+
+var store = createStore( rootReducer, middleware);
+
+export { store, history };
+

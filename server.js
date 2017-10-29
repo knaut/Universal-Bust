@@ -1,17 +1,10 @@
 // IMPORT
 import Hapi from 'hapi';
 import React from 'react';
-import { createStore, combineReducers } from 'redux';
-import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
-
-// COMPONENTS
-import Index from './src/components/Index.jsx';
-// import Navigation from './src/components/Navigation.jsx';
-import App from './src/components/App.jsx';
-
-// REDUCERS
-import counter from './src/reducers/counter.js';
+import { match, RouterContext } from 'react-router';
+import * as Store from './src/Store.js';
+const store = Store.store;
 
 // SETUP
 const server = new Hapi.Server();
@@ -22,6 +15,9 @@ server.connection({
 
 // SERVER UTILS
 import renderHead from './src/utils/renderHead.js';
+import renderBody from './src/utils/renderBody.js';
+
+import Index from './src/components/Index.jsx';
 
 // HAPI ENTRANCE
 server.register([
@@ -66,26 +62,13 @@ server.register([
     path: '/',
     handler: function(request, reply) {
 
-      const rootReducer = combineReducers({
-        counter
-      });
-
-      const store = createStore( rootReducer );
-      console.log(store.getState())
-
-      const htmlString = renderToString(
-        <Provider store={store}>
-          <div>
-            <Index />
-          </div>
-        </Provider>
+      const appHtml = renderHead(
+        renderToString( renderBody( Index ) ),
+        store.getState()
       );
+      console.log(appHtml)
 
-      const renderedHead = renderHead(htmlString, store.getState());
-
-      console.log(renderedHead)
-
-      reply( renderedHead );
+      reply( appHtml );
     }
   });
 

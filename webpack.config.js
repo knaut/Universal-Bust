@@ -4,27 +4,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const SassPlugin = require('sass-webpack-plugin');
 
 module.exports = {
-  entry: './src/Entry.js',
+  entry: './src/Client.js',
   devtool: 'inline-source-map',
   plugins: [
     new CleanWebpackPlugin([
       'dist'
     ]),
-    new SassPlugin('src/styles/global.scss'),
-    new HtmlWebpackPlugin({
-      // config api: https://github.com/jaketrent/html-webpack-template
-      template: 'node_modules/html-webpack-template/index.ejs',
-      inject: false,
-      title: 'universalBust',
-      appMountId: 'root',
-      links: [
-        {
-          href: 'css/global.css',
-          rel: 'stylesheet',
-          type: 'text/css'
-        }
-      ]
-    })
+    new SassPlugin('src/styles/global.scss')
   ],
   output: {
     filename: 'bundle.js',
