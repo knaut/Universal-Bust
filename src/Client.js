@@ -17,6 +17,7 @@ ReactDOM.render(
   <Provider store={Store.store}>
     <ConnectedRouter history={Store.history}>
       <div id="app-container">
+        <Navigation />
         <Route exact path="/" component={Index} />
         <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />

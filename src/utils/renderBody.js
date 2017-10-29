@@ -13,6 +13,7 @@ export default function renderBody(Component) {
   return( 
     <Provider store={Store.store}>
         <div id="app-container">
+          <Navigation/>
           <Component/>
         </div>
     </Provider>
