@@ -1,28 +1,41 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 // DUX
 import * as Counter from '../dux/Counter.js';
 
 class Count extends React.Component {
-  handleIncrement() {
+  static fetchData(store) {
+    return store.dispatch( Counter.getCount() )
+  }
 
+  handleIncrement() {
+    this.props.increment();
   }
 
   handleDecrement() {
-
+    this.props.decrement();
   }
 
   render() {
-    console.log(Counter);
-
     return (
       <div id='count'>
-        <button onClick={this.handleIncrement}>Increment</button>
-        <span>the count</span>
-        <button onClick={this.handleDecrement}>Decrement</button>
+        <button onClick={this.handleIncrement.bind(this)}>Increment</button>
+        <span>{this.props.count}</span>
+        <button onClick={this.handleDecrement.bind(this)}>Decrement</button>
       </div>
     );
   }
 }
 
-export default Count;
+const mapStateToProps = (state) => ({
+  count: state.count
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  increment: Counter.increment,
+  decrement: Counter.decrement
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Count);
