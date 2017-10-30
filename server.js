@@ -17,7 +17,8 @@ server.connection({
 });
 
 // SERVER UTILS
-import renderHead from './src/utils/renderHead.js';
+import renderHead from './src/Utils/renderHead.js';
+import renderRoute from './src/Utils/renderRoute.js'
 // import renderBody from './src/utils/renderBody.js';
 
 // HAPI ENTRANCE
@@ -63,7 +64,15 @@ server.register([
     path: '/',
     handler: function(request, reply) {
 
-      reply( renderHead( 'hello world', JSON.stringify(initialState) ) );
+      renderRoute( request.url )
+
+      reply( 
+        renderHead( 
+          'hello world',
+          JSON.stringify(initialState) 
+        ) 
+      );
+
     }
   });
 

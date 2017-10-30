@@ -18,17 +18,17 @@ export const GET_COUNT = 'GET_COUNT';
 
 const initialState = 0
 
-export default function counter( state = initialState, action ) {
+export default function count( state = initialState, action ) {
   switch(action.type) {
     default:
 
       return state;
 
-    case 'INCREMENT':
+    case INCREMENT:
 
       return state + 1;
 
-    case 'DECREMENT':
+    case DECREMENT:
 
       return state - 1;
   }

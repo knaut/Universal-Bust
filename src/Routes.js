@@ -1,9 +1,9 @@
-import App from './components/App.js';
-import Home from './components/Home.js';
-import About from './components/About.js';
-import Contact from './components/Contact.js';
+import App from './Components/App.js';
+import Home from './Pages/Home.js';
+import About from './Pages/About.js';
+import Contact from './Pages/Contact.js';
 
-const routes = [
+const Routes = [
   {
     component: App,
     routes: [
@@ -24,4 +24,4 @@ const routes = [
   }
 ];
 
-export default routes;
+export default Routes;
