@@ -8,9 +8,10 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 
 import Routes from '../Routes.js';
 import generateStore from './generateStore.js';
+import renderHead from './renderHead.js';
 
-
-const renderRoute = function(url) {
+const renderRoute = function(url, state, reply) {
+  const store = generateStore( state )
   const branch = matchRoutes(Routes, url);
   const promises = branch.map( ({ route }) => {
     
@@ -18,6 +19,30 @@ const renderRoute = function(url) {
     let fetchData = route.component.fetchData;
     
     console.log(fetchData)
+
+    return fetchData instanceof Function ? fetchData(store) : Promise.resolve(null)
+
+  });
+
+  console.log(promises);
+
+  return Promise.all(promises).then( (data) => {
+    let context = {};
+    
+    const content = renderToString(
+      <Provider store={store}>
+        <StaticRouter location={url} context={context}>
+          {renderRoutes(Routes)}
+        </StaticRouter>
+      </Provider>
+    );
+
+    const html = renderHead( content, state );
+
+    console.log(html)
+
+    reply( html );
+
   });
 };
 

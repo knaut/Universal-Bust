@@ -36,16 +36,16 @@ server.register([
   }
 
   // STATIC ASSETS
-  server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-      directory: {
-        path: 'dist',
-        index: ['index.html']
-      }
-    }
-  });
+  // server.route({
+  //   method: 'GET',
+  //   path: '/{param*}',
+  //   handler: {
+  //     directory: {
+  //       path: 'dist',
+  //       index: ['index.html']
+  //     }
+  //   }
+  // });
 
   server.route({
     method: 'GET',
@@ -64,14 +64,39 @@ server.register([
     path: '/',
     handler: function(request, reply) {
 
-      renderRoute( request.url )
+      // console.log(request)
 
-      reply( 
-        renderHead( 
-          'hello world',
-          JSON.stringify(initialState) 
-        ) 
-      );
+      renderRoute( request.path, initialState, reply );
+
+      // console.log(rendered);
+
+      // reply( 
+      //   renderHead( 
+      //     'hello world',
+      //     JSON.stringify(initialState) 
+      //   ) 
+      // );
+
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: function(request, reply) {
+
+      // console.log(request)
+
+      renderRoute( request.path, initialState, reply );
+
+      // console.log(rendered);
+
+      // reply( 
+      //   renderHead( 
+      //     'hello world',
+      //     JSON.stringify(initialState) 
+      //   ) 
+      // );
 
     }
   });
