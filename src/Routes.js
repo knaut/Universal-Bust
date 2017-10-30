@@ -1,7 +1,11 @@
+// COMPONENTS
 import App from './Components/App.js';
+
+// PAGES
 import Home from './Pages/Home.js';
 import About from './Pages/About.js';
 import Contact from './Pages/Contact.js';
+import Counter from './Pages/Counter.js';
 
 const Routes = [
   {
@@ -19,6 +23,10 @@ const Routes = [
       {
         path: '/contact',
         component: Contact
+      },
+      {
+        path: '/counter',
+        component: Counter
       }
     ]
   }
