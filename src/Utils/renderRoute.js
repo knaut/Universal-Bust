@@ -15,16 +15,11 @@ const renderRoute = function(url, state, reply) {
   const branch = matchRoutes(Routes, url);
   const promises = branch.map( ({ route }) => {
     
-    console.log(route);
     let fetchData = route.component.fetchData;
-    
-    console.log(fetchData)
 
     return fetchData instanceof Function ? fetchData(store) : Promise.resolve(null)
 
   });
-
-  console.log(promises);
 
   return Promise.all(promises).then( (data) => {
     let context = {};
@@ -38,8 +33,6 @@ const renderRoute = function(url, state, reply) {
     );
 
     const html = renderHead( content, state );
-
-    console.log(html)
 
     reply( html );
 

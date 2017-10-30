@@ -1,12 +1,6 @@
 // IMPORT
 import Hapi from 'hapi';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
-import StaticRouter from 'react-router-dom/StaticRouter';
-import { matchRoutes, renderRoutes } from 'react-router-config';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-
-// import routes from './src/Routes.js';
 import initialState from './initialState.js';
 
 // SETUP
@@ -19,7 +13,6 @@ server.connection({
 // SERVER UTILS
 import renderHead from './src/Utils/renderHead.js';
 import renderRoute from './src/Utils/renderRoute.js'
-// import renderBody from './src/utils/renderBody.js';
 
 // HAPI ENTRANCE
 server.register([
@@ -36,20 +29,9 @@ server.register([
   }
 
   // STATIC ASSETS
-  // server.route({
-  //   method: 'GET',
-  //   path: '/{param*}',
-  //   handler: {
-  //     directory: {
-  //       path: 'dist',
-  //       index: ['index.html']
-  //     }
-  //   }
-  // });
-
   server.route({
     method: 'GET',
-    path: '/css/{param*}',
+    path: '/assets/{param*}',
     handler: {
       directory: {
         path: 'dist',
@@ -63,20 +45,7 @@ server.register([
     method: 'GET',
     path: '/',
     handler: function(request, reply) {
-
-      // console.log(request)
-
       renderRoute( request.path, initialState, reply );
-
-      // console.log(rendered);
-
-      // reply( 
-      //   renderHead( 
-      //     'hello world',
-      //     JSON.stringify(initialState) 
-      //   ) 
-      // );
-
     }
   });
 
@@ -84,20 +53,7 @@ server.register([
     method: 'GET',
     path: '/{param*}',
     handler: function(request, reply) {
-
-      // console.log(request)
-
       renderRoute( request.path, initialState, reply );
-
-      // console.log(rendered);
-
-      // reply( 
-      //   renderHead( 
-      //     'hello world',
-      //     JSON.stringify(initialState) 
-      //   ) 
-      // );
-
     }
   });
 
