@@ -16,9 +16,7 @@ export function decrement() {
 
 export const GET_COUNT = 'GET_COUNT';
 
-const initialState = 0;
-
-export default function count( state = initialState, action ) {
+export default function count( state = null, action ) {
   switch(action.type) {
     default:
 
