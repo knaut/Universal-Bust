@@ -12,6 +12,7 @@ export default function renderHead( html, preloadedState ) {
           // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
+        <script type="text/javascript" src="/assets/bundle.js"></script>
       </body>
     </html>
   `

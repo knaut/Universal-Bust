@@ -1,9 +1,3 @@
 module.exports = {
-  pages: [
-    'home',
-    'about',
-    'contact'
-  ],
-
-  current: 'home'
+  count: 0
 }

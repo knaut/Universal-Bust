@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import rootReducer from '../dux/Root.js';
 
 const generateStore = function(initialState, middleware) {
@@ -7,7 +7,7 @@ const generateStore = function(initialState, middleware) {
     return createStore(
       rootReducer,
       initialState,
-      applyMiddleware( middleware )
+      middleware
     );  
   } else {
     return createStore(
