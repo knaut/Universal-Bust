@@ -19,5 +19,5 @@ App
     - some text and/or graphic
   - Contact
     - some text and/or form field
-  - Counter
+  - BONUS: Counter
     - an stateful counting device

@@ -1,7 +1,7 @@
-import App from './components/App.jsx';
-import Index from './components/Index.jsx';
-import About from './components/About.jsx';
-import Contact from './components/Contact.jsx';
+import App from './components/App.js';
+import Home from './components/Home.js';
+import About from './components/About.js';
+import Contact from './components/Contact.js';
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
       {
         path: '/',
         exact: true,
-        component: Index
+        component: Home
       },
       {
         path: '/about',
