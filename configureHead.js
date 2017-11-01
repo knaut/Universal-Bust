@@ -12,15 +12,15 @@ const viewport = 'width=device-width, initial-scale=1, shrink-to-fit=no';
 const robots = null;
 const canonical = null;
 
-const extStylesheets = '/css/global.css';
+const extStylesheets = 'assets/global.css';
 
 const HeadConfig = {
   lang,
   title,
-  contentType,
+  charset,
   description,
   keywords,
-  author
+  author,
   viewport,
   robots,
   canonical,

@@ -13,6 +13,10 @@ import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise-middleware';
 
+// loads all of bootstrap's js into the client bundle
+// https://getbootstrap.com/docs/4.0/getting-started/webpack/
+import 'bootstrap';
+
 
 const store = generateStore(
   window.__PRELOADED_STATE__,
