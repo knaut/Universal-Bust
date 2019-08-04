@@ -1,7 +1,7 @@
 {
-  "name": "universalbust",
-  "version": "1.0.0",
-  "description": "a sandbox for learning webpack",
+  "name": "universal-bust",
+  "version": "2.0.0",
+  "description": "a boilerplate project for server-side rendered, single-page apps",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
