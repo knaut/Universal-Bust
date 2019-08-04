@@ -24,3 +24,6 @@ yarn-error.log*
 
 # graphs
 madge_*
+
+# builds
+server.build.js
