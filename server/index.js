@@ -21,6 +21,28 @@ const manifest = {
   register: {
     plugins: [
       // add Hapi plugins, routes, auth strategies, etc. here…
+      {
+        plugin: {
+          pkg: {
+            name: 'example route',
+            version: '0.0.1'
+          },
+          register: function(server, options, next) {
+
+            server.route({
+              method: 'GET',
+              path: '/',
+              handler: function(response, h) {
+                console.log('hit test')
+                return h.response('test')
+
+              }
+            })
+
+          }
+        }
+      }
+
     ]
   }
 }
@@ -35,9 +57,9 @@ const welcome = function({
   port,
   started
 }) {
-  const timestamp = Moment(started, 'X').format('llll')
+  const timestamp = Moment(started).format('llll')
   const localAddress = `${protocol}://${address}:${port}`
-
+  const rocket = emoji.get('rocket')
   const fig = chalk.green(
     figlet.textSync('universal bust', {
       horizontalLayout: 'fit',
@@ -48,6 +70,7 @@ const welcome = function({
 
   console.log(fig)
   console.log(
+    rocket,
     chalk.bold(`Server at`), 
     chalk.bold.cyan(localAddress), 
     chalk.bold(`started on`), 
