@@ -1,4 +1,4 @@
-# Universal Bust 💥🌌
+# Universal Bust 🎇
 A server-side rendered React and Redux application for static websites.
 
 ## Stack 📚

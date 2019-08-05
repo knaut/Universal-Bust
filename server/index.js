@@ -21,6 +21,41 @@ const manifest = {
   register: {
     plugins: [
       // add Hapi plugins, routes, auth strategies, etc. here…
+      // logging configuration
+      {
+        plugin: '@hapi/good',
+        options: {
+          reporters: {
+            // add custom reporter objects here.
+            // myConsoleReporter logs everything to the console.
+            // see: https://github.com/hapijs/good/blob/master/API.md#reporter-interface
+            myConsoleReporter: [
+              {
+                module: '@hapi/good-squeeze',
+                name: 'Squeeze',
+                args: [{
+                  error: '*',
+                  log: '*',
+                  request: '*',
+                  response:'*'
+                }]
+              },
+              {
+                module: '@hapi/good-console',
+                args: [{
+                  color: {
+                    $filter: 'env',
+                    production: false,
+                    $default: true
+                  }
+                }]
+              },
+              'stdout'
+            ]
+          }
+        }
+      },
+      // custom routes
       {
         plugin: {
           pkg: {
