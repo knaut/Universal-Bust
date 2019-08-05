@@ -6,9 +6,13 @@
   "scripts": {
     "start": "npm run app:local",
     "app:local": "webpack-dev-server --config webpack.local.js",
+    "app:graph": "npx madge -i madge_app_graph.svg ./app",
     "server:build": "npx babel -d ./server_build ./server -s",
     "server:start": "npx @babel/node ./server_build",
-    "server:watch": "npx babel ./server --watch --out-file server.build.js & nodemon -L server.build.js"
+    "server:watch": "npx babel ./server --watch --out-file server.build.js & nodemon -L server.build.js",
+    "server:graph": "npx madge -i madge_server_graph.svg ./server",
+    "standard": "standard",
+    "standardize": "standard --fix"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +26,7 @@
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "figlet": "^1.2.3",
+    "madge": "^3.4.4",
     "moment": "^2.24.0",
     "node-emoji": "^1.10.0"
   },
