@@ -1,18 +1,18 @@
-import React from 'react';
-import { renderRoutes } from 'react-router-config';
+import React from 'react'
+import { renderRoutes } from 'react-router-config'
 
 // GLOBAL COMPONENTS
-import Navigation from './Navigation.js';
+import Navigation from './Navigation.js'
 
 class App extends React.Component {
-  render() {
+  render () {
     return (
-      <div id="app">
+      <div id='app'>
         <Navigation />
         {renderRoutes(this.props.route.routes)}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

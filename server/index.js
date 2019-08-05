@@ -8,11 +8,11 @@ import emoji from 'node-emoji'
 import util from 'util'
 import Moment from 'moment'
 
-clear()
-console.log(chalk.cyan('Configuring server…'))
-
 // SERVER
 import Glue from '@hapi/glue'
+
+clear()
+console.log(chalk.cyan('Configuring server…'))
 
 const manifest = {
   server: {
@@ -37,7 +37,7 @@ const manifest = {
                   error: '*',
                   log: '*',
                   request: '*',
-                  response:'*'
+                  response: '*'
                 }]
               },
               {
@@ -62,18 +62,15 @@ const manifest = {
             name: 'example route',
             version: '0.0.1'
           },
-          register: function(server, options, next) {
-
+          register: function (server, options, next) {
             server.route({
               method: 'GET',
               path: '/',
-              handler: function(response, h) {
+              handler: function (response, h) {
                 console.log('hit test')
                 return h.response('test')
-
               }
             })
-
           }
         }
       }
@@ -86,7 +83,7 @@ const options = {
   relativeTo: __dirname
 }
 
-const welcome = function({
+const welcome = function ({
   protocol,
   address,
   port,
@@ -106,9 +103,9 @@ const welcome = function({
   console.log(fig)
   console.log(
     rocket,
-    chalk.bold(`Server at`), 
-    chalk.bold.cyan(localAddress), 
-    chalk.bold(`started on`), 
+    chalk.bold(`Server at`),
+    chalk.bold.cyan(localAddress),
+    chalk.bold(`started on`),
     chalk.bold.cyan(timestamp)
   )
 }
@@ -121,7 +118,7 @@ const startServer = async function () {
 
     await server.start()
 
-    const { 
+    const {
       protocol,
       address,
       port,
@@ -134,7 +131,6 @@ const startServer = async function () {
       port,
       started
     })
-
   } catch (error) {
     console.error(error)
     process.exit(1)

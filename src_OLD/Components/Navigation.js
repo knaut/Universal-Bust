@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'react-router-dom/Link';
+import React from 'react'
+import Link from 'react-router-dom/Link'
 
 const Navigation = () => {
   return (
@@ -17,7 +17,7 @@ const Navigation = () => {
         <button><Link to='/counter'>Counter</Link></button>
       </li>
     </ul>
-  );
+  )
 }
 
-export default Navigation;
+export default Navigation
