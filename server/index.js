@@ -11,12 +11,16 @@ import Moment from 'moment'
 // SERVER
 import Glue from '@hapi/glue'
 
-clear()
+// clear()
+
+
+
+
 console.log(chalk.cyan('Configuring server…'))
 
 const manifest = {
   server: {
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 8000
   },
   register: {
     plugins: [

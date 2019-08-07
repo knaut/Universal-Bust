@@ -7,9 +7,10 @@
     "start": "npm run app:local",
     "app:local": "webpack-dev-server --config webpack.local.js",
     "app:graph": "npx madge -i madge_app_graph.svg ./app",
-    "server:build": "npx babel -d ./server_build ./server -s",
-    "server:start": "npx @babel/node ./server_build",
-    "server:watch": "npx babel ./server --watch --out-file server.build.js & nodemon -L server.build.js",
+    "server:start": "nodemon -L server.build.js",
+    "server:dev": "npx babel-node ./server",
+    "server:build": "npx babel ./server --out-dir server.build.js",
+    "server:watch": "npx babel --root-mode upward ./server --watch --out-dir server.build.js",
     "server:graph": "npx madge -i madge_server_graph.svg ./server",
     "standard": "standard",
     "standardize": "standard --fix"
@@ -30,6 +31,8 @@
     "moment": "^2.24.0",
     "node-emoji": "^1.10.0",
     "react-redux": "^7.1.0",
+    "react-router": "^5.0.1",
+    "react-router-config": "^5.0.1",
     "redux": "^4.0.4"
   },
   "devDependencies": {
