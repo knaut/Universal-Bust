@@ -8,21 +8,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: './index'
+    app: './app/index'
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].bundle.js',
-    publicPath: '../'
+    filename: '[name].bundle.js'
   },
   plugins: [
     // wrap our .env file into globals we can use in webpack-built code
-    new Dotenv(),
-    new HtmlWebpackPlugin({
-      title: 'Universal Bust 🎇 SPA + SSR for static websites.',
-      inject: true,
-      template: './webpack.template.html'
-    })
+    new Dotenv()
   ],
   module: {
     rules: [

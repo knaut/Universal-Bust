@@ -11,7 +11,7 @@ import { renderToString } from 'react-dom/server'
 import { matchRoutes, renderRoutes } from 'react-router-config'
 import generateStore, { history } from '../../utils/generateStore.js'
 
-// import renderHead from './renderHead.js'
+import renderHead from './renderHead.js'
 
 // CONFIG
 import Routes from '../../routes.js'
@@ -36,12 +36,12 @@ const renderRoute = function (url, state, env) {
       </Provider>
     )
 
-    // const html = renderHead(content, state)
+    const html = renderHead({
+      jsxString: content,
+      // preloadedState: store.getState()
+    })
 
-
-    // reply(html)
-
-    return content
+    return html
   })
 }
 
