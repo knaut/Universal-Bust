@@ -7,10 +7,8 @@
     "start": "npm run app:local",
     "app:local": "webpack-dev-server --config webpack.local.js",
     "app:graph": "npx madge -i madge_app_graph.svg ./app",
-    "server:start": "nodemon -L server.build.js",
-    "server:dev": "npx babel-node ./server",
-    "server:build": "npx babel ./server --out-dir server.build.js",
-    "server:watch": "npx babel --root-mode upward ./server --watch --out-dir server.build.js",
+    "server:start": "nodemon -L ./server/build/server.bundle.js",
+    "server:build": "npx webpack --config ./server/webpack.common.js",
     "server:graph": "npx madge -i madge_server_graph.svg ./server",
     "standard": "standard",
     "standardize": "standard --fix"
@@ -26,6 +24,7 @@
     "@hapi/hapi": "^18.3.1",
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
+    "connected-react-router": "^6.5.2",
     "figlet": "^1.2.3",
     "madge": "^3.4.4",
     "moment": "^2.24.0",
@@ -33,7 +32,11 @@
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-router-config": "^5.0.1",
-    "redux": "^4.0.4"
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^6.1.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -49,6 +52,8 @@
     "@storybook/react": "^5.0.11",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
+    "babel-watch": "^7.0.0",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "deepmerge": "^3.2.1",
     "dotenv": "^8.0.0",
@@ -61,6 +66,7 @@
     "webpack": "^4.32.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

@@ -8,12 +8,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: './app'
+    app: './index'
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].bundle.js',
-    publicPath: '/'
+    publicPath: '../'
   },
   plugins: [
     // wrap our .env file into globals we can use in webpack-built code

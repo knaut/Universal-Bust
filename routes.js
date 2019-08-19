@@ -1,7 +1,5 @@
 // COMPONENTS
-import App from './app'
-
-// SCREENS
+import App from './app/App'
 import Home from './app/components/Home'
 
 const Routes = [

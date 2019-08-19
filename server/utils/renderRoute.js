@@ -4,19 +4,20 @@ import React from 'react'
 // COMPONENTS
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
+import { ConnectedRouter, push } from 'react-router-redux';
 
 // UTILS
 import { renderToString } from 'react-dom/server'
 import { matchRoutes, renderRoutes } from 'react-router-config'
-import generateStore from './utils/generateStore.js'
+import generateStore, { history } from '../../utils/generateStore.js'
 
 // import renderHead from './renderHead.js'
 
 // CONFIG
-import Routes from '../../Routes.js'
+import Routes from '../../routes.js'
 
-const renderRoute = function (url, state, reply) {
-  const store = generateStore(state)
+const renderRoute = function (url, state, env) {
+  const { store, history } = generateStore(state, env)
   const branch = matchRoutes(Routes, url)
   const promises = branch.map(({ route }) => {
     let fetchData = route.component.fetchData
@@ -29,7 +30,7 @@ const renderRoute = function (url, state, reply) {
 
     const content = renderToString(
       <Provider store={store}>
-        <StaticRouter location={url} context={context}>
+        <StaticRouter history={history}>
           {renderRoutes(Routes)}
         </StaticRouter>
       </Provider>

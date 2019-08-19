@@ -1,6 +1,6 @@
 // IMPORTS
 import { applyMiddleware, compose, createStore } from 'redux'
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory, createMemoryHistory } from 'history'
 
 // REDUX MIDDLEWARE
 import { createLogger } from 'redux-logger'
@@ -12,24 +12,53 @@ import { routerMiddleware } from 'connected-react-router'
 import generateRootReducer from './generateRootReducer'
 
 // export this history object to be used by our ConnectedRouter later
-export const history = createBrowserHistory()
 
-export default function generateStore(state) {
+export default function generateStore(state, env) {
   const initialState = state || {}
 
-  const store = createStore(
-    generateRootReducer(history),
-    initialState,
-    compose(
-      applyMiddleware(
-        routerMiddleware(history),
-        promise,
-        thunk,
-        createLogger()
+  let store
+  let history
+
+  if (env === 'client') {
+    history = createBrowserHistory()
+
+    storeConfig.push(generateRootReducer(history))
+    storeMiddleware.push(routerMiddleware(history))
+
+    store = createStore(
+      generateRootReducer(history),
+      initialState,
+      compose(
+        applyMiddleware(
+          routerMiddleware(history),
+          promise,
+          thunk,
+          createLogger()
+        )
       )
     )
-  )
+  }
 
-  return store
+  if (env === 'server') {
+    history = createMemoryHistory()
+
+    store = createStore(
+      generateRootReducer(history),
+      initialState,
+      compose(
+        applyMiddleware(
+          routerMiddleware(history),
+          promise,
+          thunk,
+          // createLogger()
+        )
+      )
+    )
+  }
+
+  return {
+    store,
+    history
+  }
 }
 

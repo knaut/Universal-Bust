@@ -11,10 +11,8 @@ import Moment from 'moment'
 // SERVER
 import Glue from '@hapi/glue'
 
-// clear()
-
-
-
+// UTILS
+import renderRoute from './utils/renderRoute'
 
 console.log(chalk.cyan('Configuring server…'))
 
@@ -70,9 +68,11 @@ const manifest = {
             server.route({
               method: 'GET',
               path: '/',
-              handler: function (response, h) {
-                console.log('hit test')
-                return h.response('test')
+              handler: async function (request, h) {
+                // console.log('hit test', request.path)
+                const html = await renderRoute(request.path, {}, 'server')
+                console.log(html)
+                return h.response(html)
               }
             })
           }
