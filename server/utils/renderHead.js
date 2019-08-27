@@ -18,7 +18,7 @@ export default function renderHead ({
             </script>
           `) : ''
         }
-        <script type="text/javascript" src="/assets/bundle.js"></script>
+        <script type="text/javascript" src="/assets/app.bundle.js"></script>
       </body>
     </html>
   `

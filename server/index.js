@@ -23,6 +23,7 @@ const manifest = {
   register: {
     plugins: [
       // add Hapi plugins, routes, auth strategies, etc. here…
+      require('@hapi/inert'),
       // logging configuration
       {
         plugin: '@hapi/good',
@@ -65,6 +66,23 @@ const manifest = {
             version: '0.0.1'
           },
           register: function (server, options, next) {
+
+            server.route({
+              method: 'GET',
+              path: '/assets/{param*}',
+              options: {
+                plugins: {
+                  lout: false
+                },
+                handler: {
+                  directory: {
+                    path: 'app/build',
+                    index: ['index.html']
+                  }
+                }
+              }
+            });
+
             server.route({
               method: 'GET',
               path: '/',
