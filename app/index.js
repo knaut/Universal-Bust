@@ -5,8 +5,18 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-const App = () => (
-  <h1>This is the app</h1>
+// COMPONENTS
+import App from './App'
+
+// UTILS
+import generateStore from '../utils/generateStore'
+
+
+const { store, history } = generateStore({}, 'client')
+console.log(store, history)
+
+const Client = () => (
+  <App/>
 )
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<Client />, document.getElementById('root'))

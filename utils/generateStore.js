@@ -22,9 +22,6 @@ export default function generateStore(state, env) {
   if (env === 'client') {
     history = createBrowserHistory()
 
-    storeConfig.push(generateRootReducer(history))
-    storeMiddleware.push(routerMiddleware(history))
-
     store = createStore(
       generateRootReducer(history),
       initialState,

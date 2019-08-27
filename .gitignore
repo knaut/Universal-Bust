@@ -27,3 +27,5 @@ madge_*
 
 # builds
 server.build.js
+
+app/build/app.*.hot-update.json

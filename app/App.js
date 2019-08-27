@@ -5,10 +5,13 @@ import { renderRoutes } from 'react-router-config'
 // import Navigation from './Navigation.js'
 
 class App extends React.Component {
+
   render () {
+    console.log(this.props)
+
     return (
       <div id='app'>
-        {renderRoutes(this.props.route.routes)}
+        { renderRoutes(this.props.route.routes) }
       </div>
     )
   }

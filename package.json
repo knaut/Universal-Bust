@@ -7,6 +7,7 @@
     "start": "npm run app:local",
     "app:local": "webpack-dev-server --config ./app/webpack.local.js",
     "app:build": "webpack --config ./app/webpack.local.js",
+    "app:watch": "webpack --watch --config ./app/webpack.local.js",
     "app:graph": "npx madge -i madge_app_graph.svg ./app",
     "server:start": "nodemon -L ./server/build/server.bundle.js",
     "server:build": "npx webpack --config ./server/webpack.common.js",
