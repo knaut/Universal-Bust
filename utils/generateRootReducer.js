@@ -5,6 +5,6 @@ import { connectRouter } from 'connected-react-router'
 // REDUCERS
 
 export default history => combineReducers({
-  // router: connectRouter,
+  router: connectRouter(history),
   // add your reducers here...
 })

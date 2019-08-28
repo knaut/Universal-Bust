@@ -87,7 +87,7 @@ const manifest = {
               method: 'GET',
               path: '/',
               handler: async function (request, h) {
-                // console.log('hit test', request.path)
+                console.log('hit test', request.path)
                 const html = await renderRoute(request.path, {}, 'server')
                 console.log(html)
                 return h.response(html)

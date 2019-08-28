@@ -7,12 +7,12 @@ import { renderRoutes } from 'react-router-config'
 class App extends React.Component {
 
   render () {
-    console.log(this.props)
+    console.log(this)
 
     return (
-      <div id='app'>
+      <React.Fragment>
         { renderRoutes(this.props.route.routes) }
-      </div>
+      </React.Fragment>
     )
   }
 }

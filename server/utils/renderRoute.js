@@ -9,7 +9,7 @@ import { ConnectedRouter, push } from 'react-router-redux';
 // UTILS
 import { renderToString } from 'react-dom/server'
 import { matchRoutes, renderRoutes } from 'react-router-config'
-import generateStore, { history } from '../../utils/generateStore.js'
+import generateStore from '../../utils/generateStore.js'
 
 import renderHead from './renderHead.js'
 
@@ -17,7 +17,11 @@ import renderHead from './renderHead.js'
 import Routes from '../../routes.js'
 
 const renderRoute = function (url, state, env) {
-  const { store, history } = generateStore(state, env)
+  const generated = generateStore(state, env)
+  console.log(generated)
+  
+  const { store, history } = generated
+  
   const branch = matchRoutes(Routes, url)
   const promises = branch.map(({ route }) => {
     let fetchData = route.component.fetchData
