@@ -2,15 +2,16 @@ import React from 'react'
 import { renderRoutes } from 'react-router-config'
 
 // GLOBAL COMPONENTS
-// import Navigation from './Navigation.js'
+
+const Navigation = () => (
+  <h1>This is a navigation component.</h1>
+)
 
 class App extends React.Component {
-
   render () {
-    console.log(this)
-
     return (
       <React.Fragment>
+        <Navigation/>
         { renderRoutes(this.props.route.routes) }
       </React.Fragment>
     )
