@@ -1,16 +1,13 @@
-# Universal Bust 🎇
-A server-side rendered React and Redux application for static websites.
+# Universal Bust 🌟🌌
+An end-to-end Javascript, server-side-rendered (SSR), single-page application (SPA), utilizing React, Redux, & React-Router for client-side applications, and Hapi as the server-side framework for Node.
 
-## Stack 📚
-- *Hapi*: Server
-- *React*: DOM
-- *Grommet*: Styled React Components
-- *Redux*: Statefulness
-- *Webpack*: Transpiling, etc
+Webpack does the transpiling & bundling for both server and client-side app.
 
-## Goal
-Find a consistent architecture pattern for universal, single-page, end-to-end Javascript applications sans a dynamic backend.
+Designed as a boilerplate project for static web applications.
 
-**universalBust** should render a series of static pages with their own URL. If the application is refreshed on a given route, the server should resupply the application's source code in that state. The application should know its appropriate state client-side and should continue to run as normal.
+## Project Goals
+* Find a consistent architecture pattern for universal, single-page, end-to-end Javascript applications sans a dynamic backend.
 
-**universalBust** should be usable as a boilerplate for other projects.
+* Render a series of static pages with their own URL. If the application is refreshed on a given route, the server should resupply the application's source code in that state. The application should know its appropriate state client-side and should continue to run as normal.
+
+* Usable as a boilerplate for other projects.
