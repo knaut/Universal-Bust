@@ -5,6 +5,7 @@ require('dotenv').config()
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -16,7 +17,8 @@ module.exports = {
   },
   plugins: [
     // wrap our .env file into globals we can use in webpack-built code
-    new Dotenv()
+    new Dotenv(),
+    new CleanWebpackPlugin()
   ],
   module: {
     rules: [
