@@ -4,18 +4,18 @@ import {
 } from 'grommet'
 
 import {
-  Home 
+  Bike
 } from 'grommet-icons'
 
-class HomePage extends React.Component {
+class Bikes extends React.Component {
   render () {
     console.log(this)
     return (
       <Box align='center' justify='center' fill>
-        <Home size='xlarge'/>
+        <Bike color='neutral-2' size='xlarge'/>
       </Box>
     )
   }
 }
 
-export default HomePage
+export default Bikes

@@ -99,7 +99,7 @@ const manifest = {
               method: 'GET',
               path: '/{param*}',
               handler: async function (request, h) {
-
+                console.log(request)
                 const html = await renderRoute(request.path, {}, 'server')
                 
                 return h.response(html)
