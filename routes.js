@@ -1,7 +1,7 @@
 // COMPONENTS
 import App from './app/App'
 import Home from './app/components/Home'
-import About from './app/components/About'
+import Labs from './app/components/Labs'
 
 const Routes = [
   {
@@ -13,9 +13,9 @@ const Routes = [
         component: Home
       },
       {
-        path: '/about',
+        path: '/labs',
         exact: true,
-        component: About
+        component: Labs
       },
     ]
   }
