@@ -33,7 +33,7 @@
     "figlet": "^1.2.3",
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",
-    "madge": "^3.4.4",
+    "madge": "^4.0.1",
     "moment": "^2.24.0",
     "node-emoji": "^1.10.0",
     "react-redux": "^7.1.0",
